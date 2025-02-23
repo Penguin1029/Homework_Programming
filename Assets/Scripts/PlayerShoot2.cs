@@ -1,6 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerShoot : MonoBehaviour
+public class NewBehaviourScript : MonoBehaviour
 {
     public GameObject prefab;
     public Transform bulletTrash;
@@ -10,19 +12,19 @@ public class PlayerShoot : MonoBehaviour
     private float _currentTime = 0.5f;
     private bool _canShoot = true;
 
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
 
-
-
-
-    private void Update()
+    // Update is called once per frame
+    void Update()
     {
         TimerMethod();
         Shoot();
-
-        
-
-        
     }
+
     private void TimerMethod()
     {
         if (!_canShoot)
@@ -36,21 +38,30 @@ public class PlayerShoot : MonoBehaviour
         }
     }
 
+
     private void Shoot()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            GameObject bullet2 = Instantiate(prefab, bulletSpawn.position, Quaternion.identity);
+            GameObject bullet = Instantiate(prefab, bulletSpawn.position, Quaternion.identity);
 
-            bullet2.transform.SetParent(bulletTrash);
+            bullet.transform.SetParent(bulletTrash);
 
             _canShoot = false;
 
 
-        }  
-        
-        
-        
-        
         }
+
+
+
+
+    }
+
+
+
+
+
+
+
+
 }
